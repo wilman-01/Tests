@@ -2,8 +2,8 @@
   "arguments": { "argv": ["%PORT%"] },
   "programs": [
     {
-      "output": [{ "status": "SET" }, { "status": "RETURNING", "output": "hey" }],
-      "program": "as principal admin password \"admin\" do\nset x = \"he^y\"\nreturn x\n***\n"
+      "output": [{ "status": "FAILED" }],
+      "program": "as principal admin password \"admin\" do\nset x = \"h^ey\"\nreturn x\n***\n"
     }
   ]
 }
