@@ -1,0 +1,9 @@
+{
+  "arguments": { "argv": ["%PORT%"] },
+  "programs": [
+    {
+      "output": [{ "status": "SET" }, { "status": "RETURNING", "output": "hey" }],
+      "program": "as principal admin password \"admin\" do\nset x = \"hey\"\nreturn x\n***\n"
+    }
+  ]
+}
