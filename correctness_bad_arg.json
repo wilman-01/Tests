@@ -1,0 +1,12 @@
+{
+    "arguments": {
+        "argv": ["8080", "badpassword@@@@@"]
+    },
+    "programs": [
+        {
+            "output": [{ "status": "DENIED" }],
+            "program": "as principal admin password \"admin\" do\nset xxx = \"hello\"\nreturn xxx\n***\n"
+        }
+    ],
+    "return_code": 255
+}
