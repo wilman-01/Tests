@@ -7,7 +7,7 @@
     },
     {
       "output": [{ "status": "FAILED" }],
-      "program": "as principal alice password \"p\" do\nreturn y\n***\n"
+      "program": "as principal admin password \"p\" do\nreturn y\n***\n"
     }
   ]
 }
