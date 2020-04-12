@@ -2,8 +2,8 @@
   "arguments": { "argv": ["%PORT%"] },
   "programs": [
     {
-      "output": [{ "status": "FAILED" }],
-      "program": "as principal admin password \"admin\" do\ncreate principal alice \"p\"\nreturn y\n***\n"
+      "output": [{"status":"CREATE_PRINCIPAL"},{"output":[],"status":"RETURNING"}],
+      "program": "as principal admin password \"admin\" do\ncreate principal alice \"p\"\nreturn []\n***\n"
     },
     {
       "output": [{ "status": "FAILED" }],
