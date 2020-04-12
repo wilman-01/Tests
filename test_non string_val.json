@@ -2,7 +2,7 @@
   "arguments": { "argv": ["%PORT%"] },
   "programs": [
     {
-      "output": [{ "status": "SET" }, { "status": "RETURNING", "output": "hey" }],
+      "output": [{ "status": "FAILED" }],
       "program": "as principal admin password \"admin\" do\nset x = 3\nreturn x\n***\n"
     }
   ]
