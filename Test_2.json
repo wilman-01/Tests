@@ -6,7 +6,7 @@
             "program": "as principal admin password \"admin\" do\nset x = \"hello\"\nset delegation x admin read -> anyone\nreturn x\n***\n"
         },
         {
-            "output": [{"status":"CREATE_PRINCIPAL"},{"status":"CREATE_PRINCIPAL"}],
+            "output": [{"status":"CREATE_PRINCIPAL"},{"status":"CREATE_PRINCIPAL"},{"output":"hello","status":"RETURNING"}],
             "program": "as principal admin password \"admin\" do\ncreate principal bob \"b\"\ncreate principal alice \"b\"\nreturn x\n***\n"
         },
         {
@@ -14,7 +14,7 @@
             "program": "as principal admin password \"admin\" do\nset x = \"hello\"\ndelete delegation x admin read -> anyone\nreturn x\n***\n"
         },
 	{
-            "output": [{"output":"hello","status":"RETURNING"}],
+            "output": [{"status":"DENIED"}],
             "program": "as principal bob password \"b\" do\nreturn x\n***\n"
         }
     ]
