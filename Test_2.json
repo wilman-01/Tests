@@ -9,6 +9,10 @@
             "output": [{"status":"CREATE_PRINCIPAL"},{"status":"CREATE_PRINCIPAL"}],
             "program": "as principal admin password \"admin\" do\ncreate principal bob \"b\"\ncreate principal alice \"b\"\nreturn x\n***\n"
         },
+        {
+            "output": [{"status":"SET"},{"status":"DELETE_DELEGATION"},{"output":"hello","status":"RETURNING"}],
+            "program": "as principal admin password \"admin\" do\nset x = \"hello\"\ndelete delegation x admin read -> anyone\nreturn x\n***\n"
+        },
 	{
             "output": [{"output":"hello","status":"RETURNING"}],
             "program": "as principal bob password \"b\" do\nreturn x\n***\n"
