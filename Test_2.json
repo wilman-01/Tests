@@ -3,7 +3,11 @@
     "programs": [
         {
             "output": [{"status":"SET"},{"status":"CREATE_PRINCIPAL"},{"status":"CREATE_PRINCIPAL"},{"status":"SET_DELEGATION"},{"output":"hello","status":"RETURNING"}],
-            "program": "as principal admin password \"admin\" do\nset x = \"hello\"\ncreate principal bob \"b\"\ncreate principal alice \"b\"\nset delegation x admin delegate -> anyone\nreturn x\n***\n"
+            "program": "as principal admin password \"admin\" do\nset x = \"hello\"\ncreate principal bob \"b\"\ncreate principal alice \"b\"\nset delegation x admin read -> anyone\nreturn x\n***\n"
+        },
+	{
+            "output": [{"output":"hello","status":"RETURNING"}],
+            "program": "as principal bob password \"b\" do\nreturn x\n***\n"
         }
     ]
 }
