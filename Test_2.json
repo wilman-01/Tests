@@ -2,8 +2,8 @@
     "arguments": { "argv": ["%PORT%"] },
     "programs": [
         {
-            "output": [{"status":"SET"},{"status":"CREATE_PRINCIPAL"},{"status":"CREATE_PRINCIPAL"},{"output":"hello","status":"RETURNING"}],
-            "program": "as principal admin password \"admin\" do\nset x = \"hello\"\ncreate principal bob \"b\"\ncreate principal alice \"b\"\nreturn x\n***\n"
+            "output": [{"status":"SET"},{"status":"CREATE_PRINCIPAL"},{"status":"CREATE_PRINCIPAL"},{"status":"SET_DELEGATION"},{"output":"hello","status":"RETURNING"}],
+            "program": "as principal admin password \"admin\" do\nset x = \"hello\"\ncreate principal bob \"b\"\ncreate principal alice \"b\"\nset delegation x admin delegate -> anyone\nreturn x\n***\n"
         }
     ]
 }
