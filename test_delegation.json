@@ -2,20 +2,20 @@
     "arguments": { "argv": ["%PORT%"] },
     "programs": [
         {
-            "output": [{ "status": "DENIED" }],
+            "output": [{"status":"SET"},{"status":"CREATE_PRINCIPAL"},{"status":"CREATE_PRINCIPAL"},{"status":"SET_DELEGATION"},{"output":"hello","status":"RETURNING"}],
             "program": "as principal admin password \"admin\" do\nset x = \"hello\"\ncreate principal bob \"b\"\ncreate principal alice \"b\"\nset delegation x admin delegate -> anyone\nreturn x\n***\n"
         },
         {
-            "output": [{ "status": "DENIED" }],
-            "program": "as principal bob password \"b\" do\nset delegation x bob delegate -> alice\nreturn []\n***\n"
+            "output": [{"status":"SET_DELEGATION"},{"output":[],"status":"RETURNING"}],
+            "program": "as principal bob password \"b\" do\nset delegation x bob delegate -> alice\nreturn[]\n***\n"
+        },
+        {
+            "output": [{"status":"SET_DELEGATION"},{"output":[],"status":"RETURNING"}],
+            "program": "as principal admin password \"admin\" do\ndelete delegation x admin delegate -> anyone\nreturn[]\n***\n"
         },
         {
             "output": [{ "status": "DENIED" }],
-            "program": "as principal admin password \"admin\" do\ndelete delegation x admin delegate -> anyone\nreturn []\n***\n"
-        },
-        {
-            "output": [{ "status": "DENIED" }],
-            "program": "as principal bob password \"b\" do\nset delegation x bob delegate -> alice\nreturn []\n***\n"
+            "program": "as principal bob password \"b\" do\nset delegation x bob delegate -> alice\nreturn[]\n***\n"
         }
     ]
 }
