@@ -6,6 +6,10 @@
 		"base64":false
 	},
 	"programs": [
-		{"program": "as principal admin password \"admin\" do\nset x = \"2\"\nreturn x\n***", "base64": false}
+		{
+			"output": [{"status":"SET"},{"output":"2","status":"RETURNING"}],
+			"program": "as principal admin password \"admin\" do\nset x = \"2\"\nreturn x\n***", "base64": false
+				
+		}
 	]
 }
