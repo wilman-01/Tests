@@ -6,8 +6,14 @@
         "base64": false
     },
     "programs": [
-        {"program":"as principal admin password \"admin\" do\ncreate principal bob \"p\"\nset x = \"my string\"\nset delegation x admin read -> anyone\nreturn \"my string\"\n***\n", "base64": false},
-        {"program":"as principal bob password \"p\" do\nreturn x\n***\n", "base64": false},
-        {"program":"as principal admin password \"admin\" do\ndelete delegation all admin read -> bob\nreturn \"my string\"\n***\n", "base64": false}
+        { 
+          "output": [{"status":"CREATE_PRINCIPAL"},{"status":"SET"},{"status":"SET_DELEGATION"},{"output":"my string","status":"RETURNING"}],
+          "program":"as principal admin password \"admin\" do\ncreate principal bob \"p\"\nset x = \"my string\"\nset delegation x admin read -> anyone\nreturn \"my string\"\n***\n", "base64": false},
+        {
+          "output": [{"output":"my string","status":"RETURNING"}],
+          "program":"as principal bob password \"p\" do\nreturn x\n***\n", "base64": false},
+        {
+          "output": [{"status":"DELETE_DELEGATION"},{"output":"my string","status":"RETURNING"}], 
+          "program":"as principal admin password \"admin\" do\ndelete delegation all admin read -> bob\nreturn \"my string\"\n***\n", "base64": false}
     ]
 }
